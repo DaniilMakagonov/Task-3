@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Task_3_Steam_top_10
 {
@@ -20,12 +21,16 @@ namespace Task_3_Steam_top_10
         }
         else
         {
-          Console.WriteLine("Error fetching top sales data.");
+          Console.WriteLine("Ошибка при получении данных");
         }
       }
-      catch (HttpRequestException ex)
+      catch (HttpRequestException)
       {
         Console.WriteLine("Неудалось выполнить запрос к серверу");
+      }
+      catch (JsonReaderException)
+      {
+        Console.WriteLine("Ошибка при чтении данных");
       }
       catch (Exception ex)
       {
